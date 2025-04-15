@@ -16,8 +16,4 @@ async function initMap() {
     map.addChild(new YMapDefaultSchemeLayer());
 }
 
-particlesJS.load('particles-js', 'particles.json', function() {
-    console.log('particles.js loaded - callback');
-});
-
 initMap();
