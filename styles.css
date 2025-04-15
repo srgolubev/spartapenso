@@ -256,7 +256,17 @@ footer {
         box-sizing: border-box;
     }
     .container {
-        padding: 0;
+        width: 96vw;
+        padding: 0 2vw;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+    .gallery-images {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .description {
+        font-size: 1em;
+        line-height: 1.4;
     }
     .accordion-table td:first-child {
         font-size: 12px;
