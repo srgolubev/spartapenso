@@ -203,7 +203,7 @@ body {
     display: grid;
     gap: 10px;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-auto-rows: 200px;
+    grid-auto-rows: unset;
 }
 
 @media (min-width: 768px) {
@@ -228,6 +228,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+aspect-ratio: 4 / 5;
     transition: transform 0.3s ease;
 }
 
@@ -283,6 +284,27 @@ footer {
     }
     .accordion-table td:first-child {
         font-size: 12px;
+    }
+    .gallery-images {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: unset;
+        gap: 2px;
+    }
+    .gallery-images > a {
+        aspect-ratio: 4 / 5;
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    .gallery-images img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        aspect-ratio: 4 / 5;
+        margin: 0;
+        padding: 0;
+        display: block;
     }
 }
 
@@ -434,7 +456,7 @@ footer {
     border-radius: 18px;
     box-shadow: 0 2px 12px rgba(255,145,0,0.08);
     padding: 28px 26px 22px 26px;
-    min-width: 260px;
+    min-width: 160px;
     max-width: 350px;
 }
 .location-address {
@@ -522,7 +544,8 @@ footer {
 
 .activity-label {
     position: absolute;
-    left: 0; right: 0; bottom: -60px;
+    left: 0; right: 0; bottom: 0;
+animation: bounceIn 0.8s cubic-bezier(.34,1.56,.64,1) 1;
     height: 48px;
     background: rgba(20, 20, 20, 0.85);
     color: #fff;
@@ -534,7 +557,7 @@ footer {
     letter-spacing: 0.04em;
     text-transform: uppercase;
     border-radius: 0 0 12px 12px;
-    opacity: 0;
+    opacity: 1;
     pointer-events: none;
     transition: bottom 0.4s cubic-bezier(.4,1.3,.7,1), opacity 0.4s cubic-bezier(.4,1.3,.7,1);
     z-index: 2;
@@ -568,6 +591,25 @@ footer {
 .activity-card.activity-yoga.active-bg,
 .activity-card.activity-zumba.active-bg {
     background-size: 120%;
+}
+
+/* === Bounce animation for activity labels === */
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: translateY(60px) scale(0.8);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1.05);
+  }
+  80% {
+    transform: translateY(5px) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 /* === ОСНОВНЫЕ СТИЛИ === */
@@ -609,6 +651,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+aspect-ratio: 4 / 5;
     transition: transform 0.3s ease;
 }
 .gallery-images img:hover {
@@ -649,7 +692,7 @@ body {
     border-radius: 18px;
     box-shadow: 0 2px 12px rgba(255,145,0,0.08);
     padding: 28px 26px 22px 26px;
-    min-width: 260px;
+    min-width: 160px;
     max-width: 350px;
 }
 
@@ -669,7 +712,8 @@ body {
 }
 .activity-label {
     position: absolute;
-    left: 0; right: 0; bottom: -60px;
+    left: 0; right: 0; bottom: 0;
+animation: bounceIn 0.8s cubic-bezier(.34,1.56,.64,1) 1;
     height: 48px;
     background: rgba(20, 20, 20, 0.85);
     color: #fff;
@@ -681,7 +725,7 @@ body {
     letter-spacing: 0.04em;
     text-transform: uppercase;
     border-radius: 0 0 12px 12px;
-    opacity: 0;
+    opacity: 1;
     pointer-events: none;
     transition: bottom 0.4s cubic-bezier(.4,1.3,.7,1), opacity 0.4s cubic-bezier(.4,1.3,.7,1);
     z-index: 2;
