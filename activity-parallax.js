@@ -1,7 +1,8 @@
-// Эффект плавного увеличения и параллакса для всех activity-card с inline-background
+// Эффект плавного увеличения и параллакса для всех activity-card
 
 document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.activity-card[style*="background"]').forEach(function(card) {
+    // Используем просто .activity-card, так как стили теперь в CSS
+    document.querySelectorAll('.activity-card').forEach(function(card) {
         card.addEventListener('mousemove', function(e) {
             const rect = card.getBoundingClientRect();
             const x = ((e.clientX - rect.left) / rect.width - 0.5) * 2;

@@ -4,6 +4,7 @@
          url('fonts/GothamPro.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -11,6 +12,7 @@
     src: url('fonts/GothaProBol.woff') format('woff');
     font-weight: bold;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -18,6 +20,7 @@
     src: url('fonts/GothaProLig.woff') format('woff');
     font-weight: 300;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -25,6 +28,7 @@
     src: url('fonts/GothaProReg.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -32,6 +36,7 @@
     src: url('fonts/GothaProReg.woff') format('woff');
     font-weight: 500;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -88,7 +93,7 @@ body {
 .hero {
     height: 100vh;
     width: 100%;
-    background-image: url('9M7A4354.jpg');
+    background-image: url('images/9M7A4354.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -201,24 +206,21 @@ body {
 
 .gallery-images {
     display: grid;
-    gap: 10px;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-auto-rows: unset;
+    gap: 15px; /* Отступы между картинками */
+    margin-top: 20px;
+    /* 1. По умолчанию - 2 колонки */
+    grid-template-columns: repeat(2, 1fr);
 }
 
+/* 2. На экранах шире 768px - 3 колонки */
 @media (min-width: 768px) {
-    .gallery-images {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 1024px) {
     .gallery-images {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-@media (min-width: 1440px) {
+/* 3. На экранах шире 1024px - 4 колонки */
+@media (min-width: 1024px) {
     .gallery-images {
         grid-template-columns: repeat(4, 1fr);
     }
@@ -228,7 +230,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-aspect-ratio: 4 / 5;
+    aspect-ratio: 4 / 5;
     transition: transform 0.3s ease;
 }
 
@@ -534,6 +536,40 @@ footer {
     margin: 20px 0;
 }
 
+/* Стили для карточек активностей */
+.activity-card {
+    /* Общие стили для карточек, если нужны */
+    background-color: #ccc; /* Цвет фона по умолчанию */
+    background-size: cover;
+    background-position: center;
+    transition: background-size 0.3s ease, background-position 0.3s ease; /* Плавный переход для возврата */
+}
+
+.activity-card--yoga {
+    background-image: url('images/yoga.png');
+}
+.activity-card--zumba {
+    background-image: url('images/zumba.png');
+}
+.activity-card--quiz {
+    background-image: url('images/quiz.png');
+}
+.activity-card--chess {
+    background-image: url('images/chess.png');
+}
+.activity-card--neuro {
+    background-image: url('images/neuro.png');
+}
+.activity-card--paint {
+    background-image: url('images/paint.png');
+}
+.activity-card--gym {
+    background-image: url('images/gym.png');
+}
+.activity-card--phys {
+    background-image: url('images/phys.png');
+}
+
 .activity-card {
     background-color: #ccc;
     aspect-ratio: 4 / 5;
@@ -541,7 +577,6 @@ footer {
     position: relative;
     overflow: hidden;
 }
-
 .activity-label {
     position: absolute;
     left: 0; right: 0; bottom: 0;
@@ -562,20 +597,11 @@ animation: bounceIn 0.8s cubic-bezier(.34,1.56,.64,1) 1;
     transition: bottom 0.4s cubic-bezier(.4,1.3,.7,1), opacity 0.4s cubic-bezier(.4,1.3,.7,1);
     z-index: 2;
 }
-
 .activity-card:hover .activity-label {
     bottom: 0;
     opacity: 1;
     pointer-events: auto;
 }
-
-.activity-card.activity-yoga {
-    background: url('yoga.png') center/cover no-repeat, #ccc;
-}
-.activity-card.activity-zumba {
-    background: url('zumba.png') center/cover no-repeat, #ccc;
-}
-
 .activity-card:hover {
     /* отключаем масштабирование */
     transform: none;
@@ -643,15 +669,31 @@ body {
 /* --- Галерея --- */
 .gallery-images {
     display: grid;
-    gap: 10px;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-auto-rows: 200px;
+    gap: 15px; /* Отступы между картинками */
+    margin-top: 20px;
+    /* 1. По умолчанию - 2 колонки */
+    grid-template-columns: repeat(2, 1fr);
 }
+
+/* 2. На экранах шире 768px - 3 колонки */
+@media (min-width: 768px) {
+    .gallery-images {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* 3. На экранах шире 1024px - 4 колонки */
+@media (min-width: 1024px) {
+    .gallery-images {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
 .gallery-images img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-aspect-ratio: 4 / 5;
+    aspect-ratio: 4 / 5;
     transition: transform 0.3s ease;
 }
 .gallery-images img:hover {
@@ -713,7 +755,7 @@ aspect-ratio: 4 / 5;
 .activity-label {
     position: absolute;
     left: 0; right: 0; bottom: 0;
-animation: bounceIn 0.8s cubic-bezier(.34,1.56,.64,1) 1;
+    animation: bounceIn 0.8s cubic-bezier(.34,1.56,.64,1) 1;
     height: 48px;
     background: rgba(20, 20, 20, 0.85);
     color: #fff;
@@ -833,5 +875,71 @@ footer {
     display: none;
 }
 
+/* --- Cookie Consent Banner --- */
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(51, 51, 51, 0.95); /* Полупрозрачный темный фон */
+    color: #fff;
+    padding: 15px 35px 15px 20px; /* Увеличиваем правый padding */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+    display: flex; /* Используем flex для расположения текста и кнопки */
+    justify-content: space-between; /* Разносим текст и кнопку по краям */
+    align-items: center; /* Выравниваем по вертикали */
+    z-index: 1000; /* Чтобы был поверх другого контента */
+    font-size: 0.9em;
+    transform: translateY(100%); /* Изначально скрыт внизу */
+    transition: transform 0.5s ease-in-out; /* Плавное появление */
+}
 
+.cookie-banner.show {
+    transform: translateY(0); /* Показываем баннер */
+}
 
+.cookie-banner p {
+    margin: 0; /* Возвращаем стандартный сброс margin */
+    margin-right: 15px; /* Отступ справа от текста */
+    line-height: 1.4;
+}
+.cookie-banner a {
+    color: #ff9100; /* Оранжевый цвет для ссылки */
+    text-decoration: underline;
+}
+
+.cookie-banner button {
+    padding: 8px 15px;
+    background-color: #ff1744; /* Красный цвет кнопки */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex-shrink: 0; /* Запрещаем кнопке сжиматься */
+    margin-right: 40px; /* Добавляем отступ справа для кнопки */
+}
+
+.cookie-banner button:hover {
+    background-color: #d50000; /* Более темный красный при наведении */
+}
+
+/* Адаптивность для маленьких экранов */
+@media (max-width: 768px) {
+    .cookie-banner {
+        flex-direction: column; /* Текст и кнопка друг под другом */
+        text-align: center;
+        padding: 15px 20px; /* Увеличиваем горизонтальные отступы */
+        box-sizing: border-box; /* Учитывать padding внутри ширины */
+    }
+    .cookie-banner p {
+        margin-right: 0;
+        margin-bottom: 10px; /* Отступ снизу от текста */
+        overflow-wrap: break-word; /* Разрешить перенос длинных слов/ссылок */
+        box-sizing: border-box; /* Учитывать padding внутри ширины */
+    }
+    .cookie-banner button {
+        margin-right: 0; /* Убираем правый отступ у кнопки */
+        margin-top: 10px; /* Добавляем верхний отступ к кнопке */
+    }
+}
