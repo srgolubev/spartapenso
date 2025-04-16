@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isActive) {
                 // Закрываем
                 // accordionItem.classList.remove('active'); // НЕ удаляем класс сразу
-                icon.textContent = '+';
 
                 // Запускаем анимацию сворачивания
                 accordionContent.style.maxHeight = '0px'; // Явно устанавливаем 0 для transition
@@ -32,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const handleTransitionEnd = () => {
                     // Убираем класс active ТОЛЬКО после того, как контент скрылся
                     accordionItem.classList.remove('active');
+                    // icon.textContent = '+'; // Меняем текст ЗДЕСЬ, когда начинается обратный поворот
                     // Удаляем сам слушатель, чтобы он не сработал повторно
                     accordionContent.removeEventListener('transitionend', handleTransitionEnd);
                 };
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             } else {
                 accordionItem.classList.add('active');
-                icon.textContent = '-';
+                // icon.textContent = '-'; // Меняем текст сразу при открытии - это нормально
 
                 // --- Новая логика --- 
                 // 1. Убедимся, что начинаем с 0 (на случай, если был null)
