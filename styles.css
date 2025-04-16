@@ -363,10 +363,9 @@ footer {
 
 .accordion-content {
     padding: 0 28px;
-    display: none;
     overflow: hidden;
     background: linear-gradient(90deg, #fff8f2 0%, #fff 100%);
-    transition: max-height 0.5s cubic-bezier(.4,2,.6,1), padding 0.5s;
+    transition: max-height 0.5s ease-in-out;
     max-height: 0;
     text-align: left;
     border-radius: 0 0 16px 16px;
@@ -378,10 +377,8 @@ footer {
 }
 
 .accordion-item.active .accordion-content {
-    display: block;
     padding: 20px 28px 24px 28px;
     max-height: 800px;
-    transition: max-height 0.5s cubic-bezier(.4,2,.6,1), padding 0.5s;
 }
 
 .accordion-icon {
@@ -389,7 +386,7 @@ footer {
     margin-left: auto;
     margin-right: 8px;
     display: inline-block;
-    transition: transform 0.3s cubic-bezier(.4,2,.6,1), color 0.3s;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
     color: #fff;
     align-self: center;
 }
@@ -802,6 +799,7 @@ body {
     position: relative;
     overflow: hidden;
 }
+
 .register-btn:hover, .register-btn:focus {
     background: linear-gradient(90deg, #ff1744 0%, #ff9100 100%);
     color: #fff;

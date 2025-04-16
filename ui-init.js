@@ -19,13 +19,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Открываем/закрываем текущую секцию
             if (isActive) {
-                accordionItem.classList.remove('active');
-                accordionContent.style.maxHeight = null;
+                // Закрываем
+                // accordionItem.classList.remove('active'); // НЕ удаляем класс сразу
                 icon.textContent = '+';
+
+                // Запускаем анимацию сворачивания
+                accordionContent.style.maxHeight = '0px'; // Явно устанавливаем 0 для transition
+
+                // --- Новая логика с transitionend ---
+                // Добавляем слушатель, который сработает ОДИН РАЗ после завершения анимации
+                // Используем именованную функцию, чтобы ее можно было удалить
+                const handleTransitionEnd = () => {
+                    // Убираем класс active ТОЛЬКО после того, как контент скрылся
+                    accordionItem.classList.remove('active');
+                    // Удаляем сам слушатель, чтобы он не сработал повторно
+                    accordionContent.removeEventListener('transitionend', handleTransitionEnd);
+                };
+                accordionContent.addEventListener('transitionend', handleTransitionEnd);
+                // --- Конец новой логики ---
+
             } else {
                 accordionItem.classList.add('active');
-                accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
                 icon.textContent = '-';
+
+                // --- Новая логика --- 
+                // 1. Убедимся, что начинаем с 0 (на случай, если был null)
+                accordionContent.style.maxHeight = '0px';
+
+                // 2. Заставляем браузер пересчитать макет (reflow)
+                //    Чтение offsetHeight - один из способов. Результат не используется.
+                void accordionContent.offsetHeight;
+
+                // 3. Теперь устанавливаем целевую высоту для анимации
+                accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
+                // --- Конец новой логики ---
             }
         });
     });
