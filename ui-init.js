@@ -57,6 +57,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // ====== Theme Toggle Logic ======
+    const themeToggle = document.getElementById('theme-toggle');
+    if (!themeToggle) return;
+    const darkClass = 'dark-theme';
+
+    function applyTheme(dark) {
+        document.body.classList.toggle(darkClass, dark);
+    
+    }
+
+    // Load saved theme
+    let userTheme = localStorage.getItem('theme');
+    if (userTheme === 'dark') applyTheme(true);
+    else /* по умолчанию всегда светлая */ applyTheme(false);
+
+    themeToggle.addEventListener('click', function() {
+        const isDark = document.body.classList.toggle(darkClass);
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+
+    });
+    // ====== End Theme Toggle Logic ======
+
     // Инициализация ScrollReveal
     // Убедитесь, что ScrollReveal() доступен глобально
     if (typeof ScrollReveal !== 'undefined') {
