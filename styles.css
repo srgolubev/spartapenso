@@ -238,6 +238,18 @@ body {
     transform: scale(1.1);
 }
 
+.gallery-images a {
+    display: block;
+    overflow: hidden; /* Ensure the image doesn't overflow on scale */
+    border-radius: 8px; /* Optional: adds rounded corners */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: adds subtle shadow */
+}
+
+.gallery-images a:hover img {
+    transform: scale(1.05); /* Slightly enlarge image on hover */
+    opacity: 0.85; /* Slightly fade image on hover */
+}
+
 footer {
     background-color: #333;
     color: white;
@@ -540,6 +552,7 @@ footer {
     background-size: cover;
     background-position: center;
     transition: background-size 0.3s ease, background-position 0.3s ease; /* Плавный переход для возврата */
+    border-radius: 8px; /* Добавлен border-radius */
 }
 
 .activity-card--yoga {
