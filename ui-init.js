@@ -19,40 +19,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Открываем/закрываем текущую секцию
             if (isActive) {
-                // Закрываем
-                // accordionItem.classList.remove('active'); // НЕ удаляем класс сразу
+                // Закрываем: фиксируем текущую высоту, потом анимируем к 0
+                accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
+                void accordionContent.offsetHeight; // reflow
+                accordionContent.style.maxHeight = '0px';
 
-                // Запускаем анимацию сворачивания
-                accordionContent.style.maxHeight = '0px'; // Явно устанавливаем 0 для transition
-
-                // --- Новая логика с transitionend ---
-                // Добавляем слушатель, который сработает ОДИН РАЗ после завершения анимации
-                // Используем именованную функцию, чтобы ее можно было удалить
                 const handleTransitionEnd = () => {
-                    // Убираем класс active ТОЛЬКО после того, как контент скрылся
                     accordionItem.classList.remove('active');
-                    // icon.textContent = '+'; // Меняем текст ЗДЕСЬ, когда начинается обратный поворот
-                    // Удаляем сам слушатель, чтобы он не сработал повторно
                     accordionContent.removeEventListener('transitionend', handleTransitionEnd);
                 };
                 accordionContent.addEventListener('transitionend', handleTransitionEnd);
-                // --- Конец новой логики ---
 
             } else {
                 accordionItem.classList.add('active');
-                // icon.textContent = '-'; // Меняем текст сразу при открытии - это нормально
-
-                // --- Новая логика --- 
-                // 1. Убедимся, что начинаем с 0 (на случай, если был null)
                 accordionContent.style.maxHeight = '0px';
+                void accordionContent.offsetHeight; // reflow
+                accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
 
-                // 2. Заставляем браузер пересчитать макет (reflow)
-                //    Чтение offsetHeight - один из способов. Результат не используется.
-                void accordionContent.offsetHeight;
-
-                // 3. Теперь устанавливаем целевую высоту для анимации
-                accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
-                // --- Конец новой логики ---
+                // После завершения анимации снимаем ограничение высоты,
+                // чтобы вложенные раскрывашки (<details>) не обрезались.
+                const releaseMaxHeight = (e) => {
+                    if (e.propertyName !== 'max-height') return;
+                    if (accordionItem.classList.contains('active')) {
+                        accordionContent.style.maxHeight = 'none';
+                    }
+                    accordionContent.removeEventListener('transitionend', releaseMaxHeight);
+                };
+                accordionContent.addEventListener('transitionend', releaseMaxHeight);
             }
         });
     });

@@ -57,6 +57,22 @@ body.dark-theme .accordion-content {
     background: #222;
     color: #e3e3e3;
 }
+body.dark-theme .accordion-table--spartakiada thead th {
+    color: #ffae5a;
+    background: rgba(255, 145, 0, 0.10);
+    border-bottom-color: #5a3a1f;
+}
+body.dark-theme .accordion-table--spartakiada td:first-child strong {
+    color: #ffae5a;
+}
+body.dark-theme .accordion-table--spartakiada td:last-child {
+    color: #c9c9c9;
+}
+body.dark-theme .docs-required__body {
+    background: #2a2a2a;
+    color: #e3e3e3;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
 body.dark-theme .accordion-item.active::before {
     background: linear-gradient(to bottom, #7a241a, #a65c00);
 }
