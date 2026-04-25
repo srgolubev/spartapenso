@@ -479,31 +479,8 @@ footer {
     margin: 0;
 }
 
-.docs-required {
-    flex: 0 0 auto;
-}
-.docs-required[open] {
-    flex: 1 1 100%;
-}
-.docs-required__summary {
-    list-style: none;
-    cursor: pointer;
-    user-select: none;
-    display: inline-block;
-}
-.docs-required__summary::-webkit-details-marker {
-    display: none;
-}
-.docs-required__summary::after {
-    content: ' +';
-    display: inline-block;
-    transition: transform 0.3s ease;
-}
-.docs-required[open] .docs-required__summary::after {
-    content: ' \2212';
-}
 .docs-required__body {
-    margin: 18px auto 0;
+    margin: 24px auto 0;
     max-width: 720px;
     padding: 22px 26px;
     background: #fff;
@@ -551,10 +528,6 @@ footer {
         content: 'Место: ';
         font-weight: 600;
         color: #d84315;
-    }
-    .docs-required__summary {
-        font-size: 1em;
-        padding: 14px 24px;
     }
 }
 
