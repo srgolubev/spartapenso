@@ -503,31 +503,56 @@ footer {
 }
 
 @media (max-width: 700px) {
-    .accordion-table--spartakiada thead {
-        display: none;
-    }
+    /* Спартакиада: на телефонах превращаем таблицу в стопку карточек */
+    .accordion-table--spartakiada thead { display: none !important; }
     .accordion-table--spartakiada,
-    .accordion-table--spartakiada tbody,
-    .accordion-table--spartakiada tr,
-    .accordion-table--spartakiada td {
-        display: block;
-        width: 100%;
+    .accordion-table--spartakiada tbody {
+        display: block !important;
     }
     .accordion-table--spartakiada tr {
-        border-bottom: 1px solid #f2e1d2;
-        padding: 10px 0;
+        display: block !important;
+        margin: 0 0 14px 0;
+        padding: 14px 16px;
+        background: #fff;
+        border: none;
+        border-left: 4px solid #ff9100;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(255, 145, 0, 0.08);
     }
     .accordion-table--spartakiada td {
-        padding: 6px 4px;
+        display: block !important;
+        width: auto !important;
+        padding: 0 !important;
+        border: none !important;
+        text-align: left !important;
+        font-weight: normal !important;
         font-size: 0.95em;
+        line-height: 1.55;
     }
     .accordion-table--spartakiada td:first-child {
-        width: 100%;
+        margin-bottom: 10px;
+    }
+    .accordion-table--spartakiada td:first-child strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 1.05em;
+    }
+    .accordion-table--spartakiada td:last-child {
+        padding-top: 10px !important;
+        border-top: 1px dashed rgba(216, 67, 21, 0.25) !important;
+        color: #555;
+        font-size: 0.9em;
     }
     .accordion-table--spartakiada td:last-child::before {
         content: 'Место: ';
-        font-weight: 600;
+        font-weight: 700;
         color: #d84315;
+    }
+
+    /* Уменьшаем боковые отступы аккордеона на узких экранах */
+    .accordion-item.active .accordion-content {
+        padding-left: 14px;
+        padding-right: 14px;
     }
 }
 

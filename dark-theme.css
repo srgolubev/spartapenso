@@ -68,6 +68,20 @@ body.dark-theme .accordion-table--spartakiada td:first-child strong {
 body.dark-theme .accordion-table--spartakiada td:last-child {
     color: #c9c9c9;
 }
+@media (max-width: 700px) {
+    body.dark-theme .accordion-table--spartakiada tr {
+        background: #2a2a2a;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        border-left-color: #c77800;
+    }
+    body.dark-theme .accordion-table--spartakiada td:last-child {
+        border-top-color: rgba(255, 174, 90, 0.35) !important;
+        color: #c9c9c9;
+    }
+    body.dark-theme .accordion-table--spartakiada td:last-child::before {
+        color: #ffae5a;
+    }
+}
 body.dark-theme .docs-required__body {
     background: #2a2a2a;
     color: #e3e3e3;
