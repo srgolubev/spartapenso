@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Инициализация ScrollReveal
     // Убедитесь, что ScrollReveal() доступен глобально
     if (typeof ScrollReveal !== 'undefined') {
-        ScrollReveal().reveal('.hero-content, .description, .program, .activities, .gallery, .location-block', {
+        ScrollReveal().reveal('.hero-content, .description, .program, .gallery, .location-block', {
             duration: 800,
             distance: '40px',
             easing: 'ease-in-out',
